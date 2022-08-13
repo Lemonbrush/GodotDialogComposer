@@ -1,0 +1,1 @@
+{"0":{"commands":null,"responses":[{"condition":{"condition_name":"has_known","condition_sign":"=","condition_value":"true"},"next":null,"text":"I love you"},{"condition":{"condition_name":"","condition_sign":"=","condition_value":""},"next":null,"text":"I hete you!"}],"text":"","type":"response"},"1":{"commands":null,"next":null,"text":"","type":"dialog"}}

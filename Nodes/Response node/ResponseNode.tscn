@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Nodes/Abstract node/SimpleGraphNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/CommandsBlock/CommandsBlock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/AddableTextBox/AddableTextBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/Response node/ResponseNode.gd" type="Script" id=4]
+
+[node name="ResponseNode" instance=ExtResource( 1 )]
+margin_right = -1804.0
+margin_bottom = -1082.0
+rect_pivot_offset = Vector2( -616, -164 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+title = "Response"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color( 1, 1, 1, 1 )
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 4 )
+
+[node name="TextBoxContainer" type="MarginContainer" parent="." index="0"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 228.0
+margin_bottom = 54.0
+custom_constants/margin_top = 5
+custom_constants/margin_bottom = 5
+
+[node name="TextBoxVBox" type="VBoxContainer" parent="TextBoxContainer" index="0"]
+margin_top = 5.0
+margin_right = 212.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( -546, -105 )
+custom_constants/separation = 15
+
+[node name="AddableTextBox" parent="TextBoxContainer/TextBoxVBox" index="0" instance=ExtResource( 3 )]
+margin_right = 212.0
+
+[node name="ColorRect" type="ColorRect" parent="TextBoxContainer/TextBoxVBox" index="1"]
+visible = false
+margin_top = 35.0
+margin_right = 212.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 1 )
+color = Color( 0.133333, 0.12549, 0.152941, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+margin_left = 16.0
+margin_top = 55.0
+margin_right = 228.0
+margin_bottom = 95.0
+custom_constants/margin_top = 10
+
+[node name="CommandsBlock" parent="MarginContainer" index="0" instance=ExtResource( 2 )]
+margin_top = 10.0
+margin_right = 212.0
+margin_bottom = 40.0
+
+[node name="AddChoiceButtonBlock" type="MarginContainer" parent="." index="2"]
+margin_left = 16.0
+margin_top = 96.0
+margin_right = 228.0
+margin_bottom = 166.0
+custom_constants/margin_top = 40
+custom_constants/margin_bottom = 10
+
+[node name="AddCommand" type="Button" parent="AddChoiceButtonBlock" index="0"]
+margin_top = 40.0
+margin_right = 212.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 20, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 2
+text = "add option"
+
+[connection signal="pressed" from="AddChoiceButtonBlock/AddCommand" to="." method="_on_add_command_pressed"]

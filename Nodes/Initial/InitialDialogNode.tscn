@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Nodes/Abstract node/SimpleGraphNode.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Nodes/Initial/InitialDialogNode.gd" type="Script" id=2]
+
+[node name="InitialDialogNode" instance=ExtResource( 1 )]
+margin_right = -1945.0
+margin_bottom = -1100.0
+title = "Initial"
+resizable = false
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 0.85098, 0.403922, 1 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="." index="0"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 87.0
+margin_bottom = 94.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Start dialog"
+align = 1
+valign = 1
