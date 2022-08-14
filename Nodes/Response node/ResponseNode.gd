@@ -9,9 +9,15 @@ var type = "response"
 var node_id = 0
 
 func get_data():
+	var text
+	if textBox.text == "":
+		text = null
+	else:
+		text = textBox.text
+		
 	var data = {
 			"type":type,
-			"text":textBox.text,
+			"text":text,
 			"responses": get_responses(),
 			"commands": commands_block.get_commands_array()
 		}
@@ -19,6 +25,11 @@ func get_data():
 
 func set_id(id):
 	node_id = id
+	
+func set_next_id_for_choice_number(number, next_id):
+	var response_line_node = get_children()[number + 3]
+	print(response_line_node)
+	response_line_node.set_next_id(next_id)
 
 func get_responses():
 	var responses_array = []

@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/NewProjectWindow/NewProjectWindow.gd" type="Script" id=2]
+
+[node name="ExportWindow" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="MainMarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="MainMarginContainer"]
+margin_right = 2048.0
+margin_bottom = 1200.0
+color = Color( 0.0392157, 0.0392157, 0.0745098, 0.27451 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMarginContainer"]
+margin_right = 2048.0
+margin_bottom = 1200.0
+custom_constants/margin_right = 60
+custom_constants/margin_top = 60
+custom_constants/margin_left = 60
+custom_constants/margin_bottom = 60
+
+[node name="Panel" type="Panel" parent="MainMarginContainer/MarginContainer"]
+modulate = Color( 1, 1, 1, 0.901961 )
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 1988.0
+margin_bottom = 1140.0
+theme = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMarginContainer/MarginContainer/Panel"]
+margin_right = 1928.0
+margin_bottom = 1080.0
+custom_constants/margin_right = 60
+custom_constants/margin_top = 60
+custom_constants/margin_left = 60
+custom_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer"]
+margin_left = 60.0
+margin_top = 441.0
+margin_right = 1868.0
+margin_bottom = 639.0
+size_flags_horizontal = 5
+size_flags_vertical = 6
+custom_constants/separation = 30
+
+[node name="Label" type="Label" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_right = 1808.0
+margin_bottom = 14.0
+text = "new project"
+align = 1
+uppercase = true
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 1808.0
+margin_bottom = 198.0
+custom_constants/separation = 20
+
+[node name="LineContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 1808.0
+margin_bottom = 64.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineContainer"]
+margin_right = 1808.0
+margin_bottom = 14.0
+text = "Project  name"
+
+[node name="LineEdit" type="LineEdit" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineContainer"]
+margin_top = 24.0
+margin_right = 1808.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+text = "New_project"
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 84.0
+margin_right = 1808.0
+margin_bottom = 154.0
+custom_constants/separation = 10
+
+[node name="CreateButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/ButtonsContainer"]
+margin_right = 1808.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+text = "Create"
+
+[node name="CancelButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/ButtonsContainer"]
+margin_top = 40.0
+margin_right = 1808.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 200, 30 )
+text = "Cancel"
+
+[connection signal="text_changed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/ButtonsContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/ButtonsContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

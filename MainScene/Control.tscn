@@ -13,25 +13,13 @@ margin_right = 2048.0
 margin_bottom = 40.0
 color = Color( 0.133333, 0.133333, 0.152941, 1 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="FileButton" type="Button" parent="."]
 margin_left = 10.0
 margin_top = 6.0
-margin_right = 383.0
+margin_right = 96.0
 margin_bottom = 34.0
-custom_constants/separation = 10
-
-[node name="AddBeginNodeButton" type="Button" parent="HBoxContainer"]
-margin_right = 181.0
-margin_bottom = 28.0
 size_flags_horizontal = 3
-text = "Initial"
-
-[node name="SaveButton" type="Button" parent="HBoxContainer"]
-margin_left = 191.0
-margin_right = 373.0
-margin_bottom = 28.0
-size_flags_horizontal = 3
-text = "Save"
+text = "File"
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
 anchor_right = 1.0
@@ -46,8 +34,13 @@ margin_right = 22.0
 margin_bottom = 22.0
 script = ExtResource( 2 )
 
-[connection signal="pressed" from="HBoxContainer/AddBeginNodeButton" to="." method="_on_add_begin_node_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[node name="FilePopupMenu" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="FileButton" to="." method="_on_file_button_pressed"]
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
 [connection signal="disconnection_request" from="GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]

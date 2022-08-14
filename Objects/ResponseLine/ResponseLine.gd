@@ -6,21 +6,20 @@ onready var conditionBlock = $HBoxContainer/VBoxContainer/ConditionBlock
 onready var textBox = $HBoxContainer/VBoxContainer/AdaptiveTextBox
 
 var type = "ResponseLine"
+var next_id = null
 
 func get_data():
 	return {
 		"text":textBox.text,
-		"next":null,
+		"next":next_id,
 		"condition":get_condition_data()
 	}
 
 func get_condition_data():
-	var condition_data = conditionBlock.get_data()
-	return {
-		"condition_name": condition_data["name"],
-		"condition_sign": condition_data["sign"],
-		"condition_value": condition_data["value"]
-	}
+	return conditionBlock.get_data()
+
+func set_next_id(next):
+	next_id = next
 
 func get_type():
 	return type

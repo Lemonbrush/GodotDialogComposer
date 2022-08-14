@@ -22,11 +22,10 @@ func _ready():
 	sign_option_button.add_item(signs[4], 4)
 	
 func get_data():
-	return {
-		"name":condition_name_line.text,
-		"sign":signs[sign_option_button.get_selected_id()],
-		"value":value_line.text
-	}
+	if condition_name_line.text == null || condition_name_line.text == "":
+		return null
+	
+	return condition_name_line.text + " " + signs[sign_option_button.get_selected_id()] + " " + value_line.text
 
 func _on_delete_button_pressed():
 	add_line_button.visible = true
@@ -35,7 +34,6 @@ func _on_delete_button_pressed():
 	sign_option_button.select(0)
 	condition_name_line.text =""
 	value_line.text = ""
-	
 
 func _on_add_line_pressed():
 	add_line_button.visible = false
