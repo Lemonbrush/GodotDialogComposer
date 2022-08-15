@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/LoadWindow/LoadWindow.gd" type="Script" id=2]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -43,7 +45,7 @@ custom_constants/separation = 30
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 margin_right = 1848.0
 margin_bottom = 14.0
-text = "LOAD FILE"
+text = "LOAD project"
 align = 1
 uppercase = true
 
@@ -59,12 +61,12 @@ margin_right = 1848.0
 margin_bottom = 14.0
 text = "Available files"
 
-[node name="ItemList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="AvailableProjectsList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 1848.0
 margin_bottom = 891.0
 size_flags_vertical = 3
-items = [ "saved file 1", null, false ]
+allow_reselect = true
 auto_height = true
 
 [node name="CancelButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
@@ -73,3 +75,6 @@ margin_right = 1848.0
 margin_bottom = 1000.0
 rect_min_size = Vector2( 200, 35 )
 text = "Cancel"
+
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/AvailableProjectsList" to="." method="_on_available_projects_list_item_selected"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

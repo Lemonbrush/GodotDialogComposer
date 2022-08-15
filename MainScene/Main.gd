@@ -8,6 +8,8 @@ var response_graph_node = load("res://Nodes/Response node/ResponseNode.tscn")
 
 var new_project_window = load("res://UI/NewProjectWindow/NewProjectWindow.tscn")
 var export_window = load("res://UI/ExportWindow/ExportWindow.tscn")
+var save_project_window = load("res://UI/SaveWindow/SaveWindow.tscn")
+var load_window = load("res://UI/LoadWindow/LoadWindow.tscn")
 
 var initial_position = Vector2(40, 40)
 var node_index = 0
@@ -62,8 +64,8 @@ func _on_file_button_pressed():
 func _on_file_popup_id_pressed(id):	
 	match id:
 		0: show_new_project_window()
-		1: create_node(popupMenu.get_global_mouse_position(), phrase_graph_node)
-		2: create_node(popupMenu.get_global_mouse_position(), condition_graph_node)
+		1: show_window_with_scene(load_window)
+		2: show_window_with_scene(save_project_window)
 		3: show_export_window()
 
 func show_new_project_window():
@@ -90,6 +92,10 @@ func show_export_window():
 	export_window_instance.export_data = get_export_json_data()
 	graphEdit.add_child(export_window_instance)
 
+func show_window_with_scene(scene):
+	var scene_instance = scene.instance()
+	graphEdit.add_child(scene_instance)
+	
 ### Nodes connection
 
 func connect_nodes():

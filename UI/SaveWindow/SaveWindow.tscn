@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/SaveWindow/SaveWindow.gd" type="Script" id=2]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -53,17 +55,29 @@ margin_bottom = 906.0
 size_flags_vertical = 3
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
 margin_right = 1808.0
-margin_bottom = 14.0
+margin_bottom = 20.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 89.0
+margin_bottom = 17.0
 text = "Available files"
 
-[node name="ItemList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 24.0
+[node name="DeleteModeButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 109.0
+margin_right = 205.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "Delete mode"
+
+[node name="SavedFilesList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 30.0
 margin_right = 1808.0
 margin_bottom = 862.0
 size_flags_vertical = 3
-items = [ "saved file 1", null, false ]
 auto_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
@@ -84,16 +98,21 @@ margin_right = 1388.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 1398.0
 margin_right = 1598.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 200, 0 )
 text = "Save"
 
-[node name="Button2" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 1608.0
 margin_right = 1808.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 200, 0 )
 text = "Cancel"
+
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/SavedFilesList" to="." method="_on_saved_files_list_item_selected"]
+[connection signal="text_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
