@@ -10,5 +10,10 @@ func _on_Control_close_request():
 func _on_Control_resize_request(new_minsize):
 	rect_size = Vector2(new_minsize.x,0)
 
-func set_owner(currentScene):
-	owner = currentScene
+func get_node_metadata():
+	return {
+		"x": rect_position.x,
+		"y": rect_position.y,
+		"width": rect_size.x,
+		"height": rect_size.y,
+	}

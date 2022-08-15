@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Resources/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/ExportWindow/ExportWindow.gd" type="Script" id=2]
 
 [node name="ExportWindow" type="CanvasLayer"]
@@ -111,6 +111,7 @@ margin_top = 30.0
 margin_right = 1808.0
 margin_bottom = 808.0
 size_flags_vertical = 3
+allow_reselect = true
 auto_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]

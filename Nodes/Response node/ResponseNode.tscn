@@ -74,15 +74,15 @@ margin_bottom = 40.0
 margin_left = 16.0
 margin_top = 96.0
 margin_right = 228.0
-margin_bottom = 166.0
+margin_bottom = 186.0
 custom_constants/margin_top = 40
 custom_constants/margin_bottom = 10
 
 [node name="AddCommand" type="Button" parent="AddChoiceButtonBlock" index="0"]
 margin_top = 40.0
 margin_right = 212.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 20, 20 )
+margin_bottom = 80.0
+rect_min_size = Vector2( 20, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "add option"

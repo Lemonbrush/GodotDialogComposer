@@ -2,47 +2,39 @@ extends Node
 
 var save_file_resource = Save_file_resource.new()
 
-var SAVE_DIR = "res://Saves"
+var SAVE_DIR = "res://Exports"
 
-func save_project(name):
-	var dir = Directory.new()
-	if !dir.dir_exists(SAVE_DIR):
-		dir.make_dir_recursive(SAVE_DIR)
+func save(save_name, data_dictionary):
+	prepare_export_directory()
 	
-	# saving logic
+	data_dictionary["dialog_name"] = save_name
 	
-	var currentScene = get_tree().get_current_scene()
+	var file = File.new()
+	var _is_opened = file.open(SAVE_DIR + "/" + save_name + ".json", File.WRITE)
+	file.store_string(to_json(data_dictionary))
+	file.close()
+
+func shortcut_save(data_dictionary):
+	save("default_name", data_dictionary)
 	
-	print(currentScene.get_children())
-	# we have to make all subNodes to be in the root node in order to let them be packed
-	for child in currentScene.get_children():
-		if child.has_method("set_owner"):
-			child.set_owner(currentScene)
-	
-	var packedScene = PackedScene.new()
-	packedScene.pack(currentScene)
-	var lastVisitedSceneName = get_tree().get_current_scene().get_name() 
-	save_file_resource.graphScene = packedScene
-	
-	var error = ResourceSaver.save(SAVE_DIR + "/" + name + ".tres", save_file_resource)
-	if error != OK:
-		print("Save Error")
-	else:
-		print("Game saved")
+func load_project(project_name):
+	var path = SAVE_DIR + "/" + project_name
+	return
 
 func delete_project_file(project_file_name):
 	var dir = Directory.new()
 	dir.remove(SAVE_DIR + "/" + project_file_name)
 
-func load_project(project_name):
-	save_file_resource = load(SAVE_DIR + "/" + project_name)
-	print(save_file_resource.graphScene)
-	var _changedScene = get_tree().change_scene_to(save_file_resource.graphScene)
-	get_tree().get_current_scene().add_child(Button.new())
-
 ### Helpers
 
+func prepare_export_directory():
+	var dir = Directory.new()
+	if !dir.dir_exists(SAVE_DIR):
+		dir.make_dir_recursive(SAVE_DIR)
+
 func list_files_in_directory(path):
+	prepare_export_directory()
+	
 	var files = []
 	var dir = Directory.new()
 	dir.open(path)

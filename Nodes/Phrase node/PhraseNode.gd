@@ -18,7 +18,8 @@ func get_data():
 			"type":type,
 			"text":textEdit.text,
 			"next":next_id,
-			"commands":commandsBlock.get_commands_array()
+			"commands":commandsBlock.get_commands_array(),
+			"graph_data": get_node_metadata()
 		}
 		
 	return data

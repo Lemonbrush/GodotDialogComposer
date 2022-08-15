@@ -6,24 +6,22 @@ onready var saved_files_list = $MainMarginContainer/MarginContainer/Panel/Margin
 onready var export_text_field = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ExportLineEdit
 onready var pathSelectionModeToggleButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SelectionModeButton
 
-var SAVE_DIR = "res://Exports"
+var last_selected_file_index
 
 var file_list = []
 var export_data
 
 func _ready():
-	export_text_field.text = SAVE_DIR
+	export_text_field.text = SaveFileManager.SAVE_DIR
 	
 	if export_data == null:
 		saveButton.disabled = true
 	
-	prepare_export_directory()
 	update_save_button_availability()
 	update_file_list()
 
 func _on_save_button_pressed():
-	save_as_json(export_data, fileNameTextField.text)
-	queue_free()
+	save()
 
 func _on_cancel_button_pressed():
 	queue_free()
@@ -43,12 +41,16 @@ func _on_file_item_selected(index):
 		
 		update_file_list()
 	else:
-		var json_substr = new_text.find_last(".json")
-		
-		if json_substr != -1:
-			new_text.erase(json_substr, new_text.length())
-		
-		fileNameTextField.text = new_text
+		if last_selected_file_index == index:
+			save()
+		else:
+			last_selected_file_index = index
+			var json_substr = new_text.find_last(".json")
+			
+			if json_substr != -1:
+				new_text.erase(json_substr, new_text.length())
+			
+			fileNameTextField.text = new_text
 	
 	update_save_button_availability()
 
@@ -60,43 +62,16 @@ func _on_use_path_as_default_button_pressed():
 
 ### Helpers
 
+func save():
+	SaveFileManager.save(fileNameTextField.text, export_data)
+	queue_free()
+
 func update_file_list():
 	saved_files_list.clear()
-	file_list = list_files_in_directory(export_text_field.text)
+	file_list = SaveFileManager.list_files_in_directory(export_text_field.text)
 	
 	for file_name in file_list:
 		saved_files_list.add_item(file_name)
 
-func prepare_export_directory():
-	var save_dir = export_text_field.text
-	var dir = Directory.new()
-	if !dir.dir_exists(save_dir):
-		dir.make_dir_recursive(save_dir)
-
-func save_as_json(data_dictionary, save_name):
-	prepare_export_directory()
-	
-	var file = File.new()
-	var _is_opened = file.open(export_text_field.text + "/" + save_name + ".json", File.WRITE)
-	file.store_string(to_json(data_dictionary))
-	file.close()
-
 func update_save_button_availability():
 	saveButton.disabled = fileNameTextField.text == ""
-
-func list_files_in_directory(path):
-	var files = []
-	var dir = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with("."):
-			files.append(file)
-
-	dir.list_dir_end()
-
-	return files

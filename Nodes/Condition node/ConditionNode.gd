@@ -24,10 +24,9 @@ func get_data():
 	
 	var data = {
 			"type":type,
-			"condition_name":condition["name"],
-			"condition_value":condition["value"],
-			"condition_sign":condition["sign"],
+			"condition":condition,
 			"condition_satisfied":condition_satisfied_next_id,
-			"default":default_next_id
+			"default":default_next_id,
+			"graph_data": get_node_metadata()
 		}
 	return data

@@ -19,7 +19,8 @@ func get_data():
 			"type":type,
 			"text":text,
 			"responses": get_responses(),
-			"commands": commands_block.get_commands_array()
+			"commands": commands_block.get_commands_array(),
+			"graph_data": get_node_metadata()
 		}
 	return data
 
