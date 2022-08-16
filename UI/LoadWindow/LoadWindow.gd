@@ -14,6 +14,7 @@ func _on_cancel_button_pressed():
 func _on_available_projects_list_item_selected(index):
 	if selected_item_index == index:
 		SaveFileManager.load_project(file_list[index])
+		queue_free()
 	else:
 		selected_item_index = index
 

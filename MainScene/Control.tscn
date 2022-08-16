@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MainScene/Main.gd" type="Script" id=1]
 [ext_resource path="res://MainScene/PopupMenu.gd" type="Script" id=2]
+[ext_resource path="res://MainScene/GraphEditLoader.gd" type="Script" id=3]
+[ext_resource path="res://MainScene/GraphEditExporter.gd" type="Script" id=4]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -21,13 +23,13 @@ margin_bottom = 39.0
 custom_constants/separation = 15
 
 [node name="FileButton" type="Button" parent="OptionsPanel"]
-margin_right = 35.0
+margin_right = 57.0
 margin_bottom = 30.0
 size_flags_horizontal = 5
-text = "File"
+text = "Project"
 
 [node name="LineEdit" type="LineEdit" parent="OptionsPanel"]
-margin_left = 50.0
+margin_left = 72.0
 margin_right = 395.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
@@ -44,6 +46,15 @@ margin_right = 20.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="GraphEditLoader" type="Node" parent="."]
+script = ExtResource( 3 )
+main_scene_path = NodePath("..")
+graphEdit_path = NodePath("../GraphEdit")
+
+[node name="GraphEditExporter" type="Node" parent="."]
+script = ExtResource( 4 )
+graphEdit_path = NodePath("../GraphEdit")
 
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]

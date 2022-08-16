@@ -1,7 +1,9 @@
 extends Node
 
-var save_file_resource = Save_file_resource.new()
+signal project_loaded(project_data)
 
+var main_scene_path = "res://MainScene/Control.tscn"
+var save_file_resource = Save_file_resource.new()
 var SAVE_DIR = "res://Exports"
 
 func save(save_name, data_dictionary):
@@ -19,7 +21,13 @@ func shortcut_save(data_dictionary):
 	
 func load_project(project_name):
 	var path = SAVE_DIR + "/" + project_name
-	return
+	var file = File.new()
+	file.open(path, File.READ);
+	var json_obj = JSON.parse(file.get_as_text()).result
+	file.close()
+	
+	#get_tree().change_scene(main_scene_path)
+	emit_signal("project_loaded", json_obj)
 
 func delete_project_file(project_file_name):
 	var dir = Directory.new()

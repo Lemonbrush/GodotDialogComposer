@@ -23,3 +23,7 @@ func get_data():
 		}
 		
 	return data
+
+func set_graph_data(graph_data):
+	textEdit.text = graph_data["text"]
+	set_graph_node_property_data(graph_data["graph_data"])
