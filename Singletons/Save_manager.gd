@@ -26,7 +26,6 @@ func load_project(project_name):
 	var json_obj = JSON.parse(file.get_as_text()).result
 	file.close()
 	
-	#get_tree().change_scene(main_scene_path)
 	emit_signal("project_loaded", json_obj)
 
 func delete_project_file(project_file_name):

@@ -14,9 +14,11 @@ func get_node_metadata():
 		"y": rect_position.y,
 		"width": rect_size.x,
 		"height": rect_size.y,
+		"node_name":name
 	}
 
 func set_graph_node_property_data(graph_params_data):
+	name = graph_params_data["node_name"]
 	set_size(Vector2(float(graph_params_data["width"]), float(graph_params_data["height"])))
 	set_offset(Vector2(float(graph_params_data["x"]), float(graph_params_data["y"])))
 

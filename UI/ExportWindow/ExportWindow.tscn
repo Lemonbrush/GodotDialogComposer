@@ -71,15 +71,21 @@ text = "Export path"
 
 [node name="ExportLineEdit" type="LineEdit" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
 margin_left = 82.0
-margin_right = 1663.0
+margin_right = 1573.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="UsePathAsDefaultButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
-margin_left = 1673.0
-margin_right = 1808.0
+margin_left = 1583.0
+margin_right = 1718.0
 margin_bottom = 24.0
 text = "Use path as default"
+
+[node name="ResetButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
+margin_left = 1728.0
+margin_right = 1808.0
+margin_bottom = 24.0
+text = "Reset path"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
 margin_top = 98.0

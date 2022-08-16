@@ -40,23 +40,10 @@ margin_bottom = 54.0
 custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
 
-[node name="TextBoxVBox" type="VBoxContainer" parent="TextBoxContainer" index="0"]
+[node name="AddableTextBox" parent="TextBoxContainer" index="0" instance=ExtResource( 3 )]
 margin_top = 5.0
 margin_right = 212.0
 margin_bottom = 25.0
-rect_pivot_offset = Vector2( -546, -105 )
-custom_constants/separation = 15
-
-[node name="AddableTextBox" parent="TextBoxContainer/TextBoxVBox" index="0" instance=ExtResource( 3 )]
-margin_right = 212.0
-
-[node name="ColorRect" type="ColorRect" parent="TextBoxContainer/TextBoxVBox" index="1"]
-visible = false
-margin_top = 35.0
-margin_right = 212.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 0, 1 )
-color = Color( 0.133333, 0.12549, 0.152941, 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="1"]
 margin_left = 16.0
@@ -78,7 +65,7 @@ margin_bottom = 186.0
 custom_constants/margin_top = 40
 custom_constants/margin_bottom = 10
 
-[node name="AddCommand" type="Button" parent="AddChoiceButtonBlock" index="0"]
+[node name="AddOption" type="Button" parent="AddChoiceButtonBlock" index="0"]
 margin_top = 40.0
 margin_right = 212.0
 margin_bottom = 80.0
@@ -87,4 +74,4 @@ size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "add option"
 
-[connection signal="pressed" from="AddChoiceButtonBlock/AddCommand" to="." method="_on_add_command_pressed"]
+[connection signal="pressed" from="AddChoiceButtonBlock/AddOption" to="." method="_on_add_option_pressed"]

@@ -12,10 +12,14 @@ func get_data():
 	return {
 		"text":textBox.text,
 		"next":next_id,
-		"condition":get_condition_data()
+		"conditions":get_conditions_data()
 	}
 
-func get_condition_data():
+func set_data(data):
+	textBox.text = data["text"]
+	conditionBlock.load_data(data["conditions"])
+
+func get_conditions_data():
 	return conditionBlock.get_data()
 
 func set_next_id(next):

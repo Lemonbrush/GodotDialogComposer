@@ -9,4 +9,11 @@ func _on_delete_button_pressed():
 	queue_free()
 
 func get_data():
-	return line_edit.text
+	if line_edit.text != "":
+		return line_edit.text
+
+func set_data(new_text):
+	if new_text == null:
+		return
+	
+	line_edit.text = new_text

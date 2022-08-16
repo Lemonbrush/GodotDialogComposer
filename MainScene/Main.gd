@@ -8,7 +8,6 @@ var export_window = load("res://UI/ExportWindow/ExportWindow.tscn")
 var load_window = load("res://UI/LoadWindow/LoadWindow.tscn")
 
 var initial_position = Vector2(40, 40)
-var node_index = 0
 
 onready var graphEdit = $GraphEdit
 onready var popupMenu = $PopupMenu
@@ -86,10 +85,8 @@ func show_window_with_scene(scene):
 	
 func create_node(position, node_link):
 	var node = node_link.instance()
-	node.offset += initial_position + (node_index * Vector2(20, 20))
-	node.title = node.title
 	graphEdit.add_child(node)
-	node_index += 1
+	node.name = str(hash(node))
 	
 	if position:
 		node.offset = get_global_mouse_position()

@@ -3,7 +3,7 @@ extends SimpleGraphNode
 onready var conditionNameLine = $VBoxContainer/HBoxContainer2/VBoxContainer/ConditionNameLine
 onready var signLine = $VBoxContainer/HBoxContainer2/VBoxContainer2/SignLine
 onready var valueLine = $VBoxContainer/HBoxContainer2/VBoxContainer3/ValueLine
-onready var conditionBlock = $VBoxContainer/ConditionBlock
+onready var conditionsBlock = $ConditioonMarginContainer/ConditionBlock
 
 var type = "condition"
 var node_id = 0
@@ -20,13 +20,15 @@ func set_id(id):
 	node_id = id
 
 func get_data():
-	var condition = conditionBlock.get_data()
-	
 	var data = {
 			"type":type,
-			"condition":condition,
-			"condition_satisfied":condition_satisfied_next_id,
-			"default":default_next_id,
+			"conditions":conditionsBlock.get_data(),
+			"true":condition_satisfied_next_id,
+			"false":default_next_id,
 			"graph_data": get_node_metadata()
 		}
 	return data
+
+func set_graph_data(graph_data):
+	set_graph_node_property_data(graph_data["graph_data"])
+	conditionsBlock.load_data(graph_data["conditions"])

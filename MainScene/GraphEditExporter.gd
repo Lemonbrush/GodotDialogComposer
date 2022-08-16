@@ -17,6 +17,7 @@ func get_export_json_data():
 	var export_data = {}
 	
 	var connection_list = graphEdit.get_connection_list()
+	export_data["connections"] = connection_list
 	
 	var first_node = graphEdit.get_node(connection_list[0].from)
 	export_data[first_node.node_id] = first_node.get_data()
@@ -42,7 +43,8 @@ func set_ids_for_nodes():
 	var node_counter = 1
 	
 	var first_node = graphEdit.get_node(connection_list[0].from)
-	first_node.set_id(0)
+	if first_node != null:
+		first_node.set_id(0)
 	
 	for i in range(0,connection_list.size()):
 		var node = graphEdit.get_node(connection_list[i].to)
