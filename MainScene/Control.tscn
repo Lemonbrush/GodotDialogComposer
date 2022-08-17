@@ -15,6 +15,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 right_disconnects = true
 
+[node name="SelectInitialNodeButton" type="Button" parent="."]
+margin_left = 1879.0
+margin_top = 11.0
+margin_right = 2027.0
+margin_bottom = 41.0
+toggle_mode = true
+text = "Change initial node"
+
 [node name="OptionsPanel" type="HBoxContainer" parent="."]
 margin_left = 262.0
 margin_top = 9.0
@@ -54,9 +62,11 @@ graphEdit_path = NodePath("../GraphEdit")
 
 [node name="GraphEditExporter" type="Node" parent="."]
 script = ExtResource( 4 )
+main_scene_path = NodePath("..")
 graphEdit_path = NodePath("../GraphEdit")
 
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
 [connection signal="disconnection_request" from="GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
+[connection signal="node_selected" from="GraphEdit" to="." method="_on_graph_edit_node_selected"]
 [connection signal="pressed" from="OptionsPanel/FileButton" to="." method="_on_file_button_pressed"]

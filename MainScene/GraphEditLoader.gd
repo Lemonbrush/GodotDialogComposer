@@ -30,3 +30,4 @@ func load_node(node, data):
 	var phrase_node = node.instance()
 	get_node(graphEdit_path).add_child(phrase_node)
 	phrase_node.set_graph_data(data)
+	phrase_node.connect("initial_node_deleted", get_node(main_scene_path), "_on_initial_node_deleted")

@@ -17,6 +17,7 @@ onready var optionsPanel = $OptionsPanel
 onready var graphEditExporter = $GraphEditExporter
 onready var projectNameTextField = $OptionsPanel/LineEdit
 onready var projectNameLabel = $OptionsPanel/ProjectNameLabel
+onready var selectInitialNodeButton = $SelectInitialNodeButton
 
 func _ready():
 	filePopupMenu.add_item("Load", 0)
@@ -73,6 +74,31 @@ func _on_GraphEdit_connection_to_empty(from, from_slot, _release_position):
 		
 	popupMenu.popup(Rect2(mouse_position.x - 40, mouse_position.y - 20, popupMenu.rect_size.x, popupMenu.rect_size.y))
 
+func _on_graph_edit_node_selected(node):
+	if selectInitialNodeButton.pressed:
+		var initial_node = get_initial_node()
+		if initial_node:
+			initial_node.set_initial_mode(false)
+		node.set_initial_mode(true)
+		selectInitialNodeButton.pressed = false
+
+func get_initial_node():
+	for node in graphEdit.get_children():
+		if node.has_method("set_initial_mode") && node.is_initial_node == true:
+			return node
+
+func _on_initial_node_deleted():
+	set_first_node_initial()
+
+func set_first_node_initial():
+	for node in graphEdit.get_children():
+		if node.has_method("set_initial_mode") && node.is_initial_node == false:
+			node.set_initial_mode(true)
+			node.connect("initial_node_deleted", self, "_on_initial_node_deleted")
+			return
+	
+### Functions
+
 func show_export_window():
 	var export_window_instance = export_window.instance()
 	export_window_instance.export_data = graphEditExporter.get_export_json_data()
@@ -84,6 +110,7 @@ func clear_graph_edit():
 	for i in graphEdit.get_children():
 		if i.has_method("delete"):
 			i.delete()
+	projectNameLabel.text = ""
 
 func show_window_with_scene(scene):
 	var scene_instance = scene.instance()
@@ -98,3 +125,7 @@ func create_node(position, node_link):
 		node.offset = get_global_mouse_position()
 		if popupMenu.from_node != null && popupMenu.from_slot != null:
 			graphEdit.connect_node(popupMenu.from_node, popupMenu.from_slot, node.get_name(), 0)
+	
+	if get_initial_node() == null:
+		node.set_initial_mode(true)
+	node.connect("initial_node_deleted", self, "_on_initial_node_deleted")
