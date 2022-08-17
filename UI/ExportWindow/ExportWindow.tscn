@@ -112,6 +112,13 @@ margin_bottom = 20.0
 toggle_mode = true
 text = "Path selection mode"
 
+[node name="DeleteModeButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 333.0
+margin_right = 466.0
+margin_bottom = 20.0
+toggle_mode = true
+text = "File deletion mode"
+
 [node name="ItemList" type="ItemList" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
 margin_top = 30.0
 margin_right = 1808.0
@@ -154,6 +161,9 @@ text = "Cancel"
 
 [connection signal="text_changed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ExportLineEdit" to="." method="_on_export_line_edit_text_changed"]
 [connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/UsePathAsDefaultButton" to="." method="_on_use_path_as_default_button_pressed"]
+[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ResetButton" to="." method="_on_reset_path_button_pressed"]
+[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SelectionModeButton" to="." method="_on_selection_mode_button_pressed"]
+[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DeleteModeButton" to="." method="_on_delete_mode_button_pressed"]
 [connection signal="item_selected" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ItemList" to="." method="_on_file_item_selected"]
 [connection signal="text_changed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_text_field_file_name_text_changed"]
 [connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

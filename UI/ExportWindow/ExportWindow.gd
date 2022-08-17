@@ -5,6 +5,9 @@ onready var saveButton = $MainMarginContainer/MarginContainer/Panel/MarginContai
 onready var saved_files_list = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ItemList
 onready var export_text_field = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ExportLineEdit
 onready var pathSelectionModeToggleButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SelectionModeButton
+onready var fileDeletionModeToggleButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DeleteModeButton
+onready var usePathAsDefaultButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/UsePathAsDefaultButton
+onready var resetPathButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ResetButton
 
 var last_selected_file_index
 
@@ -12,13 +15,15 @@ var file_list = []
 var export_data
 
 func _ready():
-	export_text_field.text = SaveFileManager.SAVE_DIR
+	fileNameTextField.text = SaveFileManager.current_project_name
+	export_text_field.text = PreferencesManager.SAVE_DIR
 	
 	if export_data == null:
 		saveButton.disabled = true
 	
 	update_save_button_availability()
 	update_file_list()
+	check_reset_path_availability()
 
 func _on_save_button_pressed():
 	save()
@@ -40,6 +45,9 @@ func _on_file_item_selected(index):
 			export_text_field.text = export_text_field.text + new_text
 		
 		update_file_list()
+	elif fileDeletionModeToggleButton.pressed:
+		SaveFileManager.delete_project_file(new_text)
+		update_file_list()
 	else:
 		if last_selected_file_index == index:
 			save()
@@ -56,14 +64,21 @@ func _on_file_item_selected(index):
 
 func _on_export_line_edit_text_changed(new_text):
 	update_file_list()
-
+	check_reset_path_availability()
+	
 func _on_use_path_as_default_button_pressed():
-	pass # Replace with function body.
+	PreferencesManager.set_new_save_file_path(export_text_field.text)
+	check_reset_path_availability()
 
 ### Helpers
 
+func check_reset_path_availability():
+	usePathAsDefaultButton.disabled = export_text_field.text == PreferencesManager.SAVE_DIR || export_text_field.text == ""
+	resetPathButton.disabled = export_text_field.text == PreferencesManager.default_save_path
+
 func save():
-	SaveFileManager.save(fileNameTextField.text, export_data)
+	SaveFileManager.setup_current_project_name(fileNameTextField.text)
+	SaveFileManager.save(export_data)
 	queue_free()
 
 func update_file_list():
@@ -75,3 +90,14 @@ func update_file_list():
 
 func update_save_button_availability():
 	saveButton.disabled = fileNameTextField.text == ""
+
+func _on_delete_mode_button_pressed():
+	pathSelectionModeToggleButton.pressed = false
+
+func _on_selection_mode_button_pressed():
+	fileDeletionModeToggleButton.pressed = false
+
+func _on_reset_path_button_pressed():
+	export_text_field.text = PreferencesManager.default_save_path
+	check_reset_path_availability()
+	update_file_list()

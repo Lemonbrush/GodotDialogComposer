@@ -20,7 +20,7 @@ func _on_available_projects_list_item_selected(index):
 
 func update_file_list():
 	available_projects_list.clear()
-	file_list = SaveFileManager.list_files_in_directory(SaveFileManager.SAVE_DIR)
+	file_list = SaveFileManager.list_files_in_directory(PreferencesManager.SAVE_DIR)
 	
 	for file_name in file_list:
 		available_projects_list.add_item(file_name)

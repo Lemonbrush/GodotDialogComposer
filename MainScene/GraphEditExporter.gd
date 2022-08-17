@@ -2,9 +2,6 @@ extends Node
 
 export (NodePath) var graphEdit_path
 
-func _ready():
-	pass 
-
 func get_export_json_data():
 	var graphEdit = get_node(graphEdit_path)
 	
@@ -24,7 +21,6 @@ func get_export_json_data():
 	
 	for i in range(0,connection_list.size()):
 		var node_to = graphEdit.get_node(connection_list[i].to)
-		print(node_to.node_id)
 		export_data[node_to.node_id] = node_to.get_data()
 
 	return export_data

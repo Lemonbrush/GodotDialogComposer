@@ -12,7 +12,8 @@ func _ready():
 
 func _on_project_loaded(project_data):
 	var connections = project_data["connections"]
-	get_node(main_scene_path).clear_graph_edit()
+	var main_scene = get_node(main_scene_path)
+	main_scene.clear_graph_edit()
 	
 	for i in project_data:
 		if not (project_data[i] is String) && project_data[i].has("graph_data"):

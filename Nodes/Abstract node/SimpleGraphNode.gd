@@ -23,4 +23,5 @@ func set_graph_node_property_data(graph_params_data):
 	set_offset(Vector2(float(graph_params_data["x"]), float(graph_params_data["y"])))
 
 func delete():
+	name = "deleted"
 	queue_free()
