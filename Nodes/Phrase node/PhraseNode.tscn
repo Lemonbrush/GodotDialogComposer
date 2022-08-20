@@ -16,7 +16,7 @@ slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 0
-slot/0/right_color = Color( 0.0980392, 0.929412, 0.521569, 1 )
+slot/0/right_color = Color( 1, 1, 1, 1 )
 slot/1/left_enabled = false
 slot/1/left_type = 0
 slot/1/left_color = Color( 1, 1, 1, 1 )
@@ -29,14 +29,14 @@ script = ExtResource( 2 )
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 119.0
-margin_bottom = 38.0
+margin_bottom = 44.0
 text = "text"
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="1"]
 margin_left = 16.0
-margin_top = 39.0
+margin_top = 45.0
 margin_right = 119.0
-margin_bottom = 124.0
+margin_bottom = 136.0
 size_flags_vertical = 3
 custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
@@ -44,7 +44,7 @@ custom_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
 margin_top = 5.0
 margin_right = 103.0
-margin_bottom = 80.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
@@ -54,4 +54,4 @@ size_flags_horizontal = 1
 
 [node name="CommandsBlock" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource( 4 )]
 margin_top = 45.0
-margin_bottom = 75.0
+margin_bottom = 81.0

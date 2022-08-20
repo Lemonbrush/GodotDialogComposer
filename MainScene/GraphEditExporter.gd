@@ -48,12 +48,12 @@ func set_ids_for_nodes():
 		first_node.set_id(0)
 	
 	for i in range(0,connection_list.size()):
-		var node = graphEdit.get_node(connection_list[i].to)
+		var node = graphEdit.get_node(connection_list[i].from)
 		var initial_node_id = get_node_data_key(node)
 		if initial_node_id:
 			node.set_id(initial_node_id)
 		else:
-			node.set_id(node_counter)
+			node.set_id(str(node_counter))
 			node_counter += 1
 
 func connect_nodes():

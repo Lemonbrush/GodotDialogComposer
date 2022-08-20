@@ -1,11 +1,18 @@
 extends VBoxContainer
 
 onready var conditions_container = $ConditionsContainer
+onready var popupMenu = $PopupMenu
+onready var addConditionButton = $AddConditionButton
 
+var ConditionValueType = preload("res://Singletons/ConditionValueType.gd")
 var condition_line = load("res://Objects/ConditionLine/ConditionLine.tscn")
 
-func _on_add_condition_button_pressed():
-	create_condition_line()
+func _ready():
+	addConditionButton.get_popup().add_item("Numeric", 0)
+	addConditionButton.get_popup().add_item("Boolian", 1)
+	addConditionButton.get_popup().add_item("String",2)
+	
+	addConditionButton.get_popup().connect("id_pressed", self, "_on_add_conditionButton_menu_index_pressed")
 
 func get_data():
 	var condition_lines = []
@@ -25,9 +32,25 @@ func load_data(data):
 	for condition_line in data:
 		create_condition_line(condition_line)
 
-func create_condition_line(condition_text = null):
+func create_empty_condition_line(condition_line_type):
 	var condition_line_instance = condition_line.instance()
 	conditions_container.add_child(condition_line_instance)
 	
-	if condition_text != null:
-		condition_line_instance.set_data(condition_text)
+	condition_line_instance.set_condition_value_type(condition_line_type)
+
+func create_condition_line(condition_line_data):
+	var condition_line_instance = condition_line.instance()
+	conditions_container.add_child(condition_line_instance)
+	
+	condition_line_instance.set_data(condition_line_data)
+
+func _on_add_conditionButton_menu_index_pressed(index):
+	match index:
+		0: create_empty_condition_line(ConditionValueType.NUMERIC)
+		1: create_empty_condition_line(ConditionValueType.BOOLIAN)
+		2: create_empty_condition_line(ConditionValueType.STRING)
+		_: create_empty_condition_line(ConditionValueType.NUMERIC)
+
+
+func _on_add_condition_button_pressed():
+	addConditionButton.get_popup()

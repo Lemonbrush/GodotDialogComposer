@@ -1,0 +1,1 @@
+enum { NUMERIC=0, BOOLIAN=1, STRING=2 }

@@ -14,15 +14,15 @@ script = ExtResource( 1 )
 
 [node name="ConditionLine" type="HBoxContainer" parent="."]
 margin_top = 10.0
-margin_right = 185.0
+margin_right = 234.0
 margin_bottom = 52.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ConditionLine"]
+[node name="ConditionNameField" type="VBoxContainer" parent="ConditionLine"]
 margin_right = 58.0
 margin_bottom = 42.0
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="Label" parent="ConditionLine/VBoxContainer"]
+[node name="LineEdit" type="Label" parent="ConditionLine/ConditionNameField"]
 margin_right = 58.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
@@ -30,7 +30,7 @@ size_flags_vertical = 1
 text = "name"
 align = 1
 
-[node name="ConditionNameLine" type="LineEdit" parent="ConditionLine/VBoxContainer"]
+[node name="ConditionNameLine" type="LineEdit" parent="ConditionLine/ConditionNameField"]
 margin_top = 18.0
 margin_right = 58.0
 margin_bottom = 42.0
@@ -44,19 +44,26 @@ margin_right = 99.0
 margin_bottom = 42.0
 text = "="
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="ConditionLine"]
+[node name="BoolianButton" type="Button" parent="ConditionLine"]
 margin_left = 103.0
-margin_right = 161.0
+margin_right = 148.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 45, 0 )
+text = "true"
+
+[node name="ValueContainer" type="VBoxContainer" parent="ConditionLine"]
+margin_left = 152.0
+margin_right = 210.0
 margin_bottom = 42.0
 
-[node name="LineEdit" type="Label" parent="ConditionLine/VBoxContainer3"]
+[node name="LineEdit" type="Label" parent="ConditionLine/ValueContainer"]
 margin_right = 58.0
 margin_bottom = 14.0
 size_flags_vertical = 1
 text = "value"
 align = 1
 
-[node name="ValueLine" type="LineEdit" parent="ConditionLine/VBoxContainer3"]
+[node name="ValueLine" type="LineEdit" parent="ConditionLine/ValueContainer"]
 margin_top = 18.0
 margin_right = 58.0
 margin_bottom = 42.0
@@ -64,10 +71,11 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="DeleteButton" type="Button" parent="ConditionLine"]
-margin_left = 165.0
-margin_right = 185.0
+margin_left = 214.0
+margin_right = 234.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 20, 20 )
 text = "X"
 
+[connection signal="pressed" from="ConditionLine/BoolianButton" to="." method="_on_boolian_button_pressed"]
 [connection signal="pressed" from="ConditionLine/DeleteButton" to="." method="_on_delete_button_pressed"]

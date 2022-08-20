@@ -1,14 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Nodes/Abstract node/SimpleGraphNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Condition node/ConditionNode.gd" type="Script" id=2]
 [ext_resource path="res://Objects/ConditionsBlock/ConditionsBlock.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Resources/main_theme.tres" type="Theme" id=4]
 
 [node name="ConditionsNode" instance=ExtResource( 1 )]
 margin_right = -1819.0
 margin_bottom = -1065.0
-theme = ExtResource( 4 )
 title = "Condition"
 slot/0/left_enabled = true
 slot/0/left_type = 0
@@ -54,10 +52,10 @@ valign = 1
 margin_left = 16.0
 margin_top = 72.0
 margin_right = 216.0
-margin_bottom = 107.0
+margin_bottom = 113.0
 custom_constants/margin_top = 10
 
 [node name="ConditionBlock" parent="ConditioonMarginContainer" index="0" instance=ExtResource( 3 )]
 margin_top = 10.0
 margin_right = 200.0
-margin_bottom = 35.0
+margin_bottom = 41.0

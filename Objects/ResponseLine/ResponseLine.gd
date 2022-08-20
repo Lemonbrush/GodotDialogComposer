@@ -11,7 +11,7 @@ var next_id = null
 func get_data():
 	return {
 		"text":textBox.text,
-		"next":next_id,
+		"next":str(next_id),
 		"conditions":get_conditions_data()
 	}
 
