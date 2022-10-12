@@ -25,10 +25,10 @@ func get_export_json_data():
 
 	return export_data
 
-func get_node_data_key(node):
+func set_initial_node():
 	var initial_node = get_node(main_scene_path).get_initial_node()
-	if initial_node != null && initial_node == node:
-		return "Initial"
+	if initial_node != null:
+		initial_node.set_id("Initial")
 
 func set_ids_for_nodes():
 	var graphEdit = get_node(graphEdit_path)
@@ -48,13 +48,12 @@ func set_ids_for_nodes():
 		first_node.set_id(0)
 	
 	for i in range(0,connection_list.size()):
-		var node = graphEdit.get_node(connection_list[i].from)
-		var initial_node_id = get_node_data_key(node)
-		if initial_node_id:
-			node.set_id(initial_node_id)
-		else:
-			node.set_id(str(node_counter))
-			node_counter += 1
+		var node = graphEdit.get_node(connection_list[i].to)
+		node.set_id(str(node_counter))
+		print(node_counter)
+		node_counter += 1
+	
+	set_initial_node()
 
 func connect_nodes():
 	var graphEdit = get_node(graphEdit_path)
