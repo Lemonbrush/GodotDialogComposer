@@ -31,7 +31,8 @@ func _ready():
 	popupMenu.add_item("Response", 2)
 	popupMenu.connect("id_pressed", self, "_on_popup_id_pressed")
 	
-	SaveFileManager.connect("project_name_changed", self, "_on_project_name_changed")
+	var _name_changed_connection = SaveFileManager.connect("project_name_changed", self, "_on_project_name_changed")
+	var _toast_connection = SaveFileManager.connect("project_saved", self, "_show_project_saved_toast")
 
 func _input(event):
 	if event.is_pressed() and event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
@@ -40,7 +41,6 @@ func _input(event):
 		popupMenu.popup(Rect2(mouse_position.x - 40, mouse_position.y - 20, popupMenu.rect_size.x, popupMenu.rect_size.y))
 	elif Input.is_action_just_pressed("save"):
 		SaveFileManager.shortcut_save(graphEditExporter.get_export_json_data())
-		SaveFileManager.connect("project_saved", self, "_show_project_saved_toast")
 
 ### Actions
 

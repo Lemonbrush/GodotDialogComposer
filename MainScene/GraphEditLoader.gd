@@ -8,7 +8,7 @@ var condition_graph_node = load("res://Nodes/Condition node/ConditionNode.tscn")
 var response_graph_node = load("res://Nodes/Response node/ResponseNode.tscn")
 
 func _ready():
-	SaveFileManager.connect("project_loaded", self, "_on_project_loaded")
+	var _project_loaded_connection = SaveFileManager.connect("project_loaded", self, "_on_project_loaded")
 
 func _on_project_loaded(project_data):
 	var connections = project_data["connections"]

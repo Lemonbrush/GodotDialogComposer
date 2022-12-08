@@ -31,7 +31,7 @@ func _on_save_button_pressed():
 func _on_cancel_button_pressed():
 	queue_free()
 
-func _on_text_field_file_name_text_changed(new_text):
+func _on_text_field_file_name_text_changed(_new_text):
 	update_save_button_availability()
 
 func _on_file_item_selected(index):
@@ -62,7 +62,7 @@ func _on_file_item_selected(index):
 	
 	update_save_button_availability()
 
-func _on_export_line_edit_text_changed(new_text):
+func _on_export_line_edit_text_changed(_new_text):
 	update_file_list()
 	check_reset_path_availability()
 	

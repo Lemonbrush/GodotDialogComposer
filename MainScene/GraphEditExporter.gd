@@ -50,7 +50,6 @@ func set_ids_for_nodes():
 	for i in range(0,connection_list.size()):
 		var node = graphEdit.get_node(connection_list[i].to)
 		node.set_id(str(node_counter))
-		print(node_counter)
 		node_counter += 1
 	
 	set_initial_node()

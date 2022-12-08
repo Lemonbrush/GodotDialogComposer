@@ -1,8 +1,5 @@
 extends SimpleGraphNode
 
-onready var conditionNameLine = $VBoxContainer/HBoxContainer2/VBoxContainer/ConditionNameLine
-onready var signLine = $VBoxContainer/HBoxContainer2/VBoxContainer2/SignLine
-onready var valueLine = $VBoxContainer/HBoxContainer2/VBoxContainer3/ValueLine
 onready var conditionsBlock = $ConditioonMarginContainer/ConditionBlock
 
 var type = "condition"

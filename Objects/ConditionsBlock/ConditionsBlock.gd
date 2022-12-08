@@ -1,7 +1,6 @@
 extends VBoxContainer
 
 onready var conditions_container = $ConditionsContainer
-onready var popupMenu = $PopupMenu
 onready var addConditionButton = $AddConditionButton
 
 var ConditionValueType = preload("res://Singletons/ConditionValueType.gd")
@@ -29,8 +28,8 @@ func load_data(data):
 	if data == null:
 		return
 	
-	for condition_line in data:
-		create_condition_line(condition_line)
+	for condition_line_data in data:
+		create_condition_line(condition_line_data)
 
 func create_empty_condition_line(condition_line_type):
 	var condition_line_instance = condition_line.instance()
