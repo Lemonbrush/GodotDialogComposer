@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Nodes/Abstract node/SimpleGraphNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Nodes/Phrase node/PhraseNode.gd" type="Script" id=2]
 [ext_resource path="res://Objects/AdaptiveTextBox/AdaptiveTextBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/CommandsBlock/CommandsBlock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/main_theme.tres" type="Theme" id=5]
 
 [node name="PhraseNode" instance=ExtResource( 1 )]
-margin_right = -1913.0
-margin_bottom = -1070.0
+margin_bottom = -1039.0
+rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 2
 title = "Phrase"
@@ -26,32 +27,35 @@ slot/1/right_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="." index="0"]
-margin_left = 16.0
-margin_top = 24.0
-margin_right = 119.0
-margin_bottom = 44.0
+margin_left = 15.0
+margin_top = 30.0
+margin_right = 235.0
+margin_bottom = 50.0
 text = "text"
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="1"]
-margin_left = 16.0
-margin_top = 45.0
-margin_right = 119.0
-margin_bottom = 136.0
+margin_left = 15.0
+margin_top = 51.0
+margin_right = 235.0
+margin_bottom = 146.0
 size_flags_vertical = 3
+theme = ExtResource( 5 )
 custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
 margin_top = 5.0
-margin_right = 103.0
-margin_bottom = 86.0
+margin_right = 220.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="TextEdit" parent="MarginContainer/VBoxContainer" index="0" instance=ExtResource( 3 )]
+margin_right = 220.0
 size_flags_horizontal = 1
 
 [node name="CommandsBlock" parent="MarginContainer/VBoxContainer" index="1" instance=ExtResource( 4 )]
 margin_top = 45.0
-margin_bottom = 81.0
+margin_right = 220.0
+margin_bottom = 85.0

@@ -29,33 +29,33 @@ slot/2/right_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="." index="0"]
-margin_left = 16.0
-margin_top = 24.0
-margin_right = 216.0
-margin_bottom = 47.0
+margin_left = 15.0
+margin_top = 30.0
+margin_right = 215.0
+margin_bottom = 53.0
 rect_min_size = Vector2( 0, 23 )
 text = "True"
 align = 2
 valign = 1
 
 [node name="Label2" type="Label" parent="." index="1"]
-margin_left = 16.0
-margin_top = 48.0
-margin_right = 216.0
-margin_bottom = 71.0
+margin_left = 15.0
+margin_top = 54.0
+margin_right = 215.0
+margin_bottom = 77.0
 rect_min_size = Vector2( 0, 23 )
 text = "False"
 align = 2
 valign = 1
 
 [node name="ConditioonMarginContainer" type="MarginContainer" parent="." index="2"]
-margin_left = 16.0
-margin_top = 72.0
-margin_right = 216.0
-margin_bottom = 113.0
+margin_left = 15.0
+margin_top = 78.0
+margin_right = 215.0
+margin_bottom = 123.0
 custom_constants/margin_top = 10
 
 [node name="ConditionBlock" parent="ConditioonMarginContainer" index="0" instance=ExtResource( 3 )]
 margin_top = 10.0
 margin_right = 200.0
-margin_bottom = 41.0
+margin_bottom = 45.0

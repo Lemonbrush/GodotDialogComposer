@@ -1,9 +1,64 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Fonts/Nunito.tres" type="DynamicFont" id=1]
 [ext_resource path="res://SimpleGraphNode.tres" type="StyleBox" id=2]
 [ext_resource path="res://Assets/Icons/Cross.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Fonts/Nunito_black.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.172549, 0.14902, 0.211765, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.294118, 0.266667, 0.384314, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.172549, 0.14902, 0.211765, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.172549, 0.14902, 0.211765, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.619608, 0.596078, 0.701961, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.254902, 0.258824, 0.376471, 1 )
@@ -25,6 +80,24 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color( 1, 1, 1, 0.6 )
 
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.227451, 0.203922, 0.282353, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.227451, 0.203922, 0.282353, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.160784, 0.160784, 0.176471, 1 )
 corner_radius_top_left = 20
@@ -34,8 +107,47 @@ corner_radius_bottom_left = 20
 shadow_color = Color( 0, 0, 0, 0.223529 )
 shadow_size = 19
 
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 30.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.113725, 0.0901961, 0.14902, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.247059, 0.211765, 0.294118, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.2, 0.176471, 0.247059, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.2, 0.176471, 0.247059, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
 default_font = ExtResource( 1 )
+Button/styles/hover = SubResource( 8 )
+Button/styles/normal = SubResource( 9 )
+Button/styles/pressed = SubResource( 10 )
 GraphEdit/colors/grid_major = Color( 1, 1, 1, 0.0392157 )
 GraphEdit/colors/grid_minor = Color( 1, 1, 1, 0.0392157 )
 GraphEdit/styles/bg = SubResource( 3 )
@@ -48,4 +160,9 @@ GraphNode/fonts/title_font = ExtResource( 4 )
 GraphNode/icons/close = ExtResource( 3 )
 GraphNode/styles/frame = SubResource( 2 )
 GraphNode/styles/selectedframe = ExtResource( 2 )
+LineEdit/styles/focus = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 4 )
 Panel/styles/panel = SubResource( 1 )
+PopupMenu/styles/panel = SubResource( 11 )
+TextEdit/styles/focus = SubResource( 6 )
+TextEdit/styles/normal = SubResource( 7 )

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/ConditionLine/ConditionLine.gd" type="Script" id=1]
+[ext_resource path="res://Resources/main_theme.tres" type="Theme" id=2]
 
 [node name="ConditionLine" type="MarginContainer"]
 margin_right = 103.0
@@ -8,72 +9,74 @@ margin_bottom = 20.0
 rect_pivot_offset = Vector2( -262, -134 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 2 )
 custom_constants/margin_top = 10
 custom_constants/margin_bottom = 10
 script = ExtResource( 1 )
 
 [node name="ConditionLine" type="HBoxContainer" parent="."]
 margin_top = 10.0
-margin_right = 234.0
-margin_bottom = 52.0
+margin_right = 233.0
+margin_bottom = 54.0
+custom_constants/separation = 10
 
 [node name="ConditionNameField" type="VBoxContainer" parent="ConditionLine"]
-margin_right = 58.0
-margin_bottom = 42.0
+margin_right = 48.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 
 [node name="LineEdit" type="Label" parent="ConditionLine/ConditionNameField"]
-margin_right = 58.0
-margin_bottom = 14.0
+margin_right = 48.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "name"
 align = 1
 
 [node name="ConditionNameLine" type="LineEdit" parent="ConditionLine/ConditionNameField"]
-margin_top = 18.0
-margin_right = 58.0
-margin_bottom = 42.0
+margin_top = 24.0
+margin_right = 48.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="SignOptionButton" type="OptionButton" parent="ConditionLine"]
-margin_left = 62.0
-margin_right = 99.0
-margin_bottom = 42.0
+margin_left = 58.0
+margin_right = 90.0
+margin_bottom = 44.0
 text = "="
 
 [node name="BoolianButton" type="Button" parent="ConditionLine"]
-margin_left = 103.0
-margin_right = 148.0
-margin_bottom = 42.0
+margin_left = 100.0
+margin_right = 145.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 45, 0 )
 text = "true"
 
 [node name="ValueContainer" type="VBoxContainer" parent="ConditionLine"]
-margin_left = 152.0
-margin_right = 210.0
-margin_bottom = 42.0
+margin_left = 155.0
+margin_right = 203.0
+margin_bottom = 44.0
 
 [node name="LineEdit" type="Label" parent="ConditionLine/ValueContainer"]
-margin_right = 58.0
-margin_bottom = 14.0
+margin_right = 48.0
+margin_bottom = 20.0
 size_flags_vertical = 1
 text = "value"
 align = 1
 
 [node name="ValueLine" type="LineEdit" parent="ConditionLine/ValueContainer"]
-margin_top = 18.0
-margin_right = 58.0
-margin_bottom = 42.0
+margin_top = 24.0
+margin_right = 48.0
+margin_bottom = 44.0
 caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="DeleteButton" type="Button" parent="ConditionLine"]
-margin_left = 214.0
-margin_right = 234.0
-margin_bottom = 42.0
+margin_left = 213.0
+margin_right = 233.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 20, 20 )
 text = "X"
 

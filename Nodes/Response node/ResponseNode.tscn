@@ -6,8 +6,9 @@
 [ext_resource path="res://Nodes/Response node/ResponseNode.gd" type="Script" id=4]
 
 [node name="ResponseNode" instance=ExtResource( 1 )]
-margin_right = -1804.0
-margin_bottom = -1082.0
+margin_right = -1798.0
+margin_bottom = -973.0
+rect_min_size = Vector2( 250, 0 )
 rect_pivot_offset = Vector2( -616, -164 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -33,41 +34,41 @@ slot/2/right_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 4 )
 
 [node name="TextBoxContainer" type="MarginContainer" parent="." index="0"]
-margin_left = 16.0
-margin_top = 24.0
-margin_right = 228.0
-margin_bottom = 54.0
+margin_left = 15.0
+margin_top = 30.0
+margin_right = 235.0
+margin_bottom = 70.0
 custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
 
 [node name="AddableTextBox" parent="TextBoxContainer" index="0" instance=ExtResource( 3 )]
 margin_top = 5.0
-margin_right = 212.0
-margin_bottom = 25.0
+margin_right = 220.0
+margin_bottom = 35.0
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="1"]
-margin_left = 16.0
-margin_top = 55.0
-margin_right = 228.0
-margin_bottom = 95.0
+margin_left = 15.0
+margin_top = 71.0
+margin_right = 235.0
+margin_bottom = 121.0
 custom_constants/margin_top = 10
 
 [node name="CommandsBlock" parent="MarginContainer" index="0" instance=ExtResource( 2 )]
 margin_top = 10.0
-margin_right = 212.0
-margin_bottom = 40.0
+margin_right = 220.0
+margin_bottom = 50.0
 
 [node name="AddChoiceButtonBlock" type="MarginContainer" parent="." index="2"]
-margin_left = 16.0
-margin_top = 96.0
-margin_right = 228.0
-margin_bottom = 186.0
+margin_left = 15.0
+margin_top = 122.0
+margin_right = 235.0
+margin_bottom = 212.0
 custom_constants/margin_top = 40
 custom_constants/margin_bottom = 10
 
 [node name="AddOption" type="Button" parent="AddChoiceButtonBlock" index="0"]
 margin_top = 40.0
-margin_right = 212.0
+margin_right = 220.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 20, 40 )
 size_flags_horizontal = 3

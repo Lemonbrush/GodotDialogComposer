@@ -9,8 +9,6 @@ var load_window = load("res://UI/LoadWindow/LoadWindow.tscn")
 
 var toast_scene = preload("res://UI/Toast/Toast.tscn")
 
-var initial_position = Vector2(40, 40)
-
 onready var graphEdit = $GraphEdit
 onready var popupMenu = $PopupMenu
 onready var filePopupMenu = $FilePopupMenu
@@ -46,7 +44,7 @@ func _input(event):
 
 func _on_project_name_changed(new_name):
 	projectNameLabel.text = new_name
-
+	
 func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
 	graphEdit.connect_node(from, from_slot, to, to_slot)
 

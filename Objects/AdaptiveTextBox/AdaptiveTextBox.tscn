@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/AdaptiveTextBox/AdaptiveTextBox.gd" type="Script" id=1]
+[ext_resource path="res://Resources/main_theme.tres" type="Theme" id=2]
 
 [node name="AdaptiveTextBox" type="TextEdit"]
 margin_right = 103.0
@@ -8,6 +9,7 @@ margin_bottom = 30.0
 rect_min_size = Vector2( 20, 30 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 text_edit_line_height = 35
 
