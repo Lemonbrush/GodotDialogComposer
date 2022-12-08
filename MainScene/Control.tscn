@@ -69,6 +69,9 @@ script = ExtResource( 4 )
 main_scene_path = NodePath("..")
 graphEdit_path = NodePath("../GraphEdit")
 
+[node name="ToastPosition" type="Position2D" parent="."]
+position = Vector2( 100, 92 )
+
 [connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
 [connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
 [connection signal="disconnection_request" from="GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]

@@ -1,5 +1,6 @@
 extends Node
 
+signal project_saved()
 signal project_loaded(project_data)
 signal project_name_changed(new_name)
 
@@ -15,6 +16,7 @@ func save(data_dictionary):
 	file.close()
 	
 	emit_signal("project_name_changed", current_project_name)
+	emit_signal("project_saved")
 
 func shortcut_save(data_dictionary):
 	save(data_dictionary)

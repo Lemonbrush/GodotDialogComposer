@@ -7,6 +7,8 @@ var response_graph_node = load("res://Nodes/Response node/ResponseNode.tscn")
 var export_window = load("res://UI/ExportWindow/ExportWindow.tscn")
 var load_window = load("res://UI/LoadWindow/LoadWindow.tscn")
 
+var toast_scene = preload("res://UI/Toast/Toast.tscn")
+
 var initial_position = Vector2(40, 40)
 
 onready var graphEdit = $GraphEdit
@@ -15,7 +17,6 @@ onready var filePopupMenu = $FilePopupMenu
 onready var fileButton = $OptionsPanel/FileButton
 onready var optionsPanel = $OptionsPanel
 onready var graphEditExporter = $GraphEditExporter
-onready var projectNameTextField = $OptionsPanel/LineEdit
 onready var projectNameLabel = $OptionsPanel/ProjectNameLabel
 onready var selectInitialNodeButton = $SelectInitialNodeButton
 
@@ -39,6 +40,7 @@ func _input(event):
 		popupMenu.popup(Rect2(mouse_position.x - 40, mouse_position.y - 20, popupMenu.rect_size.x, popupMenu.rect_size.y))
 	elif Input.is_action_just_pressed("save"):
 		SaveFileManager.shortcut_save(graphEditExporter.get_export_json_data())
+		SaveFileManager.connect("project_saved", self, "_show_project_saved_toast")
 
 ### Actions
 
@@ -96,6 +98,11 @@ func set_first_node_initial():
 			node.set_initial_mode(true)
 			node.connect("initial_node_deleted", self, "_on_initial_node_deleted")
 			return
+
+func _show_project_saved_toast():
+	var toast_instance = toast_scene.instance()
+	add_child(toast_instance)
+	toast_instance.position = $ToastPosition.position
 	
 ### Functions
 

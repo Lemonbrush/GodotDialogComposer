@@ -33,7 +33,6 @@ PreferencesManager="*res://Singletons/Preferences_manager.gd"
 
 window/size/width=2048
 window/size/height=1200
-window/size/resizable=false
 
 [input]
 
