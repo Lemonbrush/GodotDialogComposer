@@ -13,40 +13,76 @@ anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 1 )
 
-[node name="GraphEdit" type="GraphEdit" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 6 )
-right_disconnects = true
-snap_distance = 30
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+margin_right = 2048.0
+margin_bottom = 1200.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+color = Color( 0.113725, 0.0862745, 0.152941, 1 )
 
-[node name="SelectInitialNodeButton" type="Button" parent="."]
-margin_left = 1834.0
-margin_top = 10.0
-margin_right = 2026.0
-margin_bottom = 46.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 2048.0
+margin_bottom = 1200.0
+custom_constants/separation = 0
+
+[node name="OptionsBarMarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_right = 2048.0
+margin_bottom = 60.0
+custom_constants/margin_right = 15
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 15
+
+[node name="OptionsBar" type="HBoxContainer" parent="VBoxContainer/OptionsBarMarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 2033.0
+margin_bottom = 45.0
+custom_constants/separation = 10
+
+[node name="OptionsPanel" type="HBoxContainer" parent="VBoxContainer/OptionsBarMarginContainer/OptionsBar"]
+margin_right = 366.0
+margin_bottom = 30.0
+custom_constants/separation = 15
+
+[node name="Settings" type="Button" parent="VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel"]
+margin_right = 62.0
+margin_bottom = 30.0
+disabled = true
+text = "Settings"
+
+[node name="FileButton" type="Button" parent="VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel"]
+margin_left = 77.0
+margin_right = 109.0
+margin_bottom = 30.0
+size_flags_horizontal = 5
+text = "File"
+
+[node name="ProjectNameLabel" type="LineEdit" parent="VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel"]
+margin_left = 124.0
+margin_right = 222.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 5 )
+text = "New_dialog"
+expand_to_text_length = true
+
+[node name="SelectInitialNodeButton" type="Button" parent="VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel"]
+margin_left = 237.0
+margin_right = 366.0
+margin_bottom = 30.0
 toggle_mode = true
 text = "Change initial node"
 
-[node name="OptionsPanel" type="HBoxContainer" parent="."]
-margin_left = 274.0
-margin_top = 12.0
-margin_right = 669.0
-margin_bottom = 48.0
-custom_constants/separation = 15
-
-[node name="FileButton" type="Button" parent="OptionsPanel"]
-margin_right = 55.0
-margin_bottom = 36.0
-size_flags_horizontal = 5
-text = "Project"
-
-[node name="ProjectNameLabel" type="Label" parent="OptionsPanel"]
-margin_left = 70.0
-margin_top = 8.0
-margin_right = 70.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 5 )
+[node name="GraphEdit" type="GraphEdit" parent="VBoxContainer"]
+margin_top = 60.0
+margin_right = 2048.0
+margin_bottom = 1200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+right_disconnects = true
+scroll_offset = Vector2( -40, -30 )
+snap_distance = 30
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
 margin_left = 2.0
@@ -64,18 +100,18 @@ size_flags_vertical = 3
 [node name="GraphEditLoader" type="Node" parent="."]
 script = ExtResource( 3 )
 main_scene_path = NodePath("..")
-graphEdit_path = NodePath("../GraphEdit")
+graphEdit_path = NodePath("../VBoxContainer/GraphEdit")
 
 [node name="GraphEditExporter" type="Node" parent="."]
 script = ExtResource( 4 )
 main_scene_path = NodePath("..")
-graphEdit_path = NodePath("../GraphEdit")
+graphEdit_path = NodePath("../VBoxContainer/GraphEdit")
 
 [node name="ToastPosition" type="Position2D" parent="."]
-position = Vector2( 100, 92 )
+position = Vector2( 83, 150 )
 
-[connection signal="connection_request" from="GraphEdit" to="." method="_on_GraphEdit_connection_request"]
-[connection signal="connection_to_empty" from="GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
-[connection signal="disconnection_request" from="GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
-[connection signal="node_selected" from="GraphEdit" to="." method="_on_graph_edit_node_selected"]
-[connection signal="pressed" from="OptionsPanel/FileButton" to="." method="_on_file_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel/FileButton" to="." method="_on_file_button_pressed"]
+[connection signal="connection_request" from="VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_connection_request"]
+[connection signal="connection_to_empty" from="VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_connection_to_empty"]
+[connection signal="disconnection_request" from="VBoxContainer/GraphEdit" to="." method="_on_GraphEdit_disconnection_request"]
+[connection signal="node_selected" from="VBoxContainer/GraphEdit" to="." method="_on_graph_edit_node_selected"]

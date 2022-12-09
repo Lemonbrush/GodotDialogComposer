@@ -13,9 +13,10 @@ var last_selected_file_index
 
 var file_list = []
 var export_data
+var project_name = "Project_name"
 
 func _ready():
-	fileNameTextField.text = SaveFileManager.current_project_name
+	fileNameTextField.text = project_name
 	export_text_field.text = PreferencesManager.SAVE_DIR
 	
 	if export_data == null:

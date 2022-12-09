@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var available_projects_list = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/AvailableProjectsList
+onready var available_projects_list = $MarginContainer/Panel/MarginContainer/VBoxContainer/AvailableProjectsList
 
 var selected_item_index
 var file_list = []

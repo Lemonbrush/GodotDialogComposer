@@ -9,14 +9,15 @@ var load_window = load("res://UI/LoadWindow/LoadWindow.tscn")
 
 var toast_scene = preload("res://UI/Toast/Toast.tscn")
 
-onready var graphEdit = $GraphEdit
+onready var graphEdit = $VBoxContainer/GraphEdit
 onready var popupMenu = $PopupMenu
 onready var filePopupMenu = $FilePopupMenu
-onready var fileButton = $OptionsPanel/FileButton
-onready var optionsPanel = $OptionsPanel
+onready var fileButton = $VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel/FileButton
+onready var optionsPanel = $VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel
 onready var graphEditExporter = $GraphEditExporter
-onready var projectNameLabel = $OptionsPanel/ProjectNameLabel
-onready var selectInitialNodeButton = $SelectInitialNodeButton
+onready var projectNameLabel = $VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel/ProjectNameLabel
+onready var selectInitialNodeButton = $VBoxContainer/OptionsBarMarginContainer/OptionsBar/OptionsPanel/SelectInitialNodeButton
+onready var toastPosition = $ToastPosition
 
 func _ready():
 	filePopupMenu.add_item("Load", 0)
@@ -52,7 +53,12 @@ func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot):
 	graphEdit.disconnect_node(from, from_slot, to, to_slot)
 
 func _on_file_button_pressed():
-	filePopupMenu.popup(Rect2(optionsPanel.rect_position.x, optionsPanel.rect_position.y, filePopupMenu.rect_size.x, filePopupMenu.rect_size.y))
+	var popupRect = Rect2(
+		fileButton.rect_position.x, 
+		fileButton.rect_position.y, 
+		fileButton.rect_size.x, 
+		fileButton.rect_size.y)
+	filePopupMenu.popup(popupRect)
 
 func _on_file_popup_id_pressed(id):	
 	match id:
@@ -100,13 +106,14 @@ func set_first_node_initial():
 func _show_project_saved_toast():
 	var toast_instance = toast_scene.instance()
 	add_child(toast_instance)
-	toast_instance.position = $ToastPosition.position
+	toast_instance.position = toastPosition.position
 	
 ### Functions
 
 func show_export_window():
 	var export_window_instance = export_window.instance()
 	export_window_instance.export_data = graphEditExporter.get_export_json_data()
+	export_window_instance.project_name = projectNameLabel.text
 	graphEdit.add_child(export_window_instance)
 
 ### Helpers
@@ -115,7 +122,7 @@ func clear_graph_edit():
 	for i in graphEdit.get_children():
 		if i.has_method("delete"):
 			i.delete()
-	projectNameLabel.text = ""
+	projectNameLabel.text = "New_dialog"
 
 func show_window_with_scene(scene):
 	var scene_instance = scene.instance()

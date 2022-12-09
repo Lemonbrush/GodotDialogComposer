@@ -1,9 +1,24 @@
-[gd_resource type="Theme" load_steps=16 format=2]
+[gd_resource type="Theme" load_steps=18 format=2]
 
 [ext_resource path="res://Resources/Fonts/Nunito.tres" type="DynamicFont" id=1]
 [ext_resource path="res://SimpleGraphNode.tres" type="StyleBox" id=2]
 [ext_resource path="res://Assets/Icons/Cross.png" type="Texture" id=3]
 [ext_resource path="res://Resources/Fonts/Nunito_black.tres" type="DynamicFont" id=4]
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.141176, 0.121569, 0.180392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id=8]
 content_margin_left = 5.0
@@ -92,20 +107,47 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
 bg_color = Color( 0.227451, 0.203922, 0.282353, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.160784, 0.160784, 0.176471, 1 )
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color( 0, 0, 0, 0.223529 )
-shadow_size = 19
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 15.0
+content_margin_right = 15.0
+content_margin_top = 30.0
+content_margin_bottom = 15.0
+bg_color = Color( 0.113725, 0.0901961, 0.14902, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.172549, 0.14902, 0.211765, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id=11]
 content_margin_left = 15.0
@@ -137,6 +179,10 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
 bg_color = Color( 0.2, 0.176471, 0.247059, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
@@ -145,6 +191,7 @@ corner_radius_bottom_left = 5
 
 [resource]
 default_font = ExtResource( 1 )
+Button/styles/disabled = SubResource( 12 )
 Button/styles/hover = SubResource( 8 )
 Button/styles/normal = SubResource( 9 )
 Button/styles/pressed = SubResource( 10 )
@@ -162,7 +209,8 @@ GraphNode/styles/frame = SubResource( 2 )
 GraphNode/styles/selectedframe = ExtResource( 2 )
 LineEdit/styles/focus = SubResource( 5 )
 LineEdit/styles/normal = SubResource( 4 )
-Panel/styles/panel = SubResource( 1 )
+Panel/styles/panel = SubResource( 14 )
+PanelContainer/styles/panel = SubResource( 13 )
 PopupMenu/styles/panel = SubResource( 11 )
 TextEdit/styles/focus = SubResource( 6 )
 TextEdit/styles/normal = SubResource( 7 )
