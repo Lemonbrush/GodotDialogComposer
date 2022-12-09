@@ -6,6 +6,11 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 2048.0
+margin_bottom = 1200.0
+color = Color( 0.0392157, 0.0392157, 0.0745098, 0.27451 )
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -59,9 +64,10 @@ margin_bottom = 30.0
 size_flags_horizontal = 2
 
 [node name="CancelButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TopLabelContainer"]
-margin_left = 1829.0
+margin_left = 1818.0
 margin_right = 1848.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "X"
