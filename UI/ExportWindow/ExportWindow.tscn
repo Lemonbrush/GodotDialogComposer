@@ -6,26 +6,23 @@
 [node name="ExportWindow" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="MainMarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="MainMarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 2048.0
 margin_bottom = 1200.0
 color = Color( 0.0392157, 0.0392157, 0.0745098, 0.27451 )
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 2048.0
 margin_bottom = 1200.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 theme = ExtResource( 1 )
 custom_constants/margin_right = 60
 custom_constants/margin_top = 60
 custom_constants/margin_left = 60
 custom_constants/margin_bottom = 60
 
-[node name="Panel" type="Panel" parent="MainMarginContainer/MarginContainer"]
+[node name="Panel" type="PanelContainer" parent="MarginContainer"]
 modulate = Color( 1, 1, 1, 0.901961 )
 margin_left = 60.0
 margin_top = 60.0
@@ -35,7 +32,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMarginContainer/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 1923.0
@@ -45,7 +42,7 @@ custom_constants/margin_top = 60
 custom_constants/margin_left = 60
 custom_constants/margin_bottom = 60
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
 margin_left = 60.0
 margin_top = 60.0
 margin_right = 1858.0
@@ -54,120 +51,133 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 30
 
-[node name="Label" type="Label" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="TopLabelHBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 margin_right = 1798.0
-margin_bottom = 20.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TopLabelHBox"]
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 25.0
 text = "EXPORT FILE"
 align = 1
 uppercase = true
 
-[node name="ExportFilePathHBox" type="HBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
-margin_top = 50.0
+[node name="Spacer" type="Control" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TopLabelHBox"]
+margin_left = 90.0
+margin_right = 90.0
+margin_bottom = 30.0
+size_flags_horizontal = 2
+
+[node name="CancelButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/TopLabelHBox"]
+margin_left = 1779.0
 margin_right = 1798.0
-margin_bottom = 80.0
+margin_bottom = 30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "X"
+
+[node name="ExportFilePathHBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 1798.0
+margin_bottom = 90.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
 margin_top = 5.0
 margin_right = 73.0
 margin_bottom = 25.0
 text = "Export path"
 
-[node name="ExportLineEdit" type="LineEdit" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
+[node name="ExportLineEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
 margin_left = 83.0
 margin_right = 1569.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 
-[node name="UsePathAsDefaultButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
+[node name="UsePathAsDefaultButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
 margin_left = 1579.0
 margin_right = 1711.0
 margin_bottom = 30.0
 text = "Use path as default"
 
-[node name="ResetButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
+[node name="ResetButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox"]
 margin_left = 1721.0
 margin_right = 1798.0
 margin_bottom = 30.0
 text = "Reset path"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
-margin_top = 110.0
+[node name="FileSelectionModeHBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 120.0
 margin_right = 1798.0
-margin_bottom = 890.0
-size_flags_vertical = 3
-custom_constants/separation = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
-margin_right = 1798.0
-margin_bottom = 30.0
+margin_bottom = 150.0
 custom_constants/separation = 20
 
-[node name="Label" type="Label" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileSelectionModeHBox"]
 margin_top = 5.0
 margin_right = 87.0
 margin_bottom = 25.0
 text = "Available files"
 
-[node name="SelectionModeButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="SelectionModeButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileSelectionModeHBox"]
 margin_left = 107.0
 margin_right = 244.0
 margin_bottom = 30.0
 toggle_mode = true
 text = "Path selection mode"
 
-[node name="DeleteModeButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="DeleteModeButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileSelectionModeHBox"]
 margin_left = 264.0
 margin_right = 389.0
 margin_bottom = 30.0
 toggle_mode = true
 text = "File deletion mode"
 
-[node name="ItemList" type="ItemList" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
-margin_top = 40.0
+[node name="ItemList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 180.0
 margin_right = 1798.0
-margin_bottom = 780.0
+margin_bottom = 890.0
 size_flags_vertical = 3
 auto_height = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="FileNameHBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 margin_top = 920.0
 margin_right = 1798.0
 margin_bottom = 950.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox"]
 margin_top = 5.0
 margin_right = 60.0
 margin_bottom = 25.0
 text = "File name"
 
-[node name="LineEdit" type="LineEdit" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox"]
 margin_left = 70.0
 margin_right = 1378.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 
-[node name="SaveButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox"]
 margin_left = 1388.0
 margin_right = 1588.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 0 )
 text = "Save"
 
-[node name="CancelButton" type="Button" parent="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox"]
 margin_left = 1598.0
 margin_right = 1798.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 0 )
 text = "Cancel"
 
-[connection signal="text_changed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ExportLineEdit" to="." method="_on_export_line_edit_text_changed"]
-[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/UsePathAsDefaultButton" to="." method="_on_use_path_as_default_button_pressed"]
-[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ResetButton" to="." method="_on_reset_path_button_pressed"]
-[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SelectionModeButton" to="." method="_on_selection_mode_button_pressed"]
-[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DeleteModeButton" to="." method="_on_delete_mode_button_pressed"]
-[connection signal="item_selected" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ItemList" to="." method="_on_file_item_selected"]
-[connection signal="text_changed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_text_field_file_name_text_changed"]
-[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ExportLineEdit" to="." method="_on_export_line_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/UsePathAsDefaultButton" to="." method="_on_use_path_as_default_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ResetButton" to="." method="_on_reset_path_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/FileSelectionModeHBox/SelectionModeButton" to="." method="_on_selection_mode_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/FileSelectionModeHBox/DeleteModeButton" to="." method="_on_delete_mode_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/ItemList" to="." method="_on_file_item_selected"]
+[connection signal="text_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox/LineEdit" to="." method="_on_text_field_file_name_text_changed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox/CancelButton" to="." method="_on_cancel_button_pressed"]

@@ -1,13 +1,13 @@
 extends CanvasLayer
 
-onready var fileNameTextField = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LineEdit
-onready var saveButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/SaveButton
-onready var saved_files_list = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ItemList
-onready var export_text_field = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ExportLineEdit
+onready var fileNameTextField = $MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox/Label
+onready var saveButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox/SaveButton
+onready var saved_files_list = $MarginContainer/Panel/MarginContainer/VBoxContainer/ItemList
+onready var export_text_field = $MarginContainer/Panel/MarginContainer/VBoxContainer/FileNameHBox/Label
 onready var pathSelectionModeToggleButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SelectionModeButton
 onready var fileDeletionModeToggleButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DeleteModeButton
-onready var usePathAsDefaultButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/UsePathAsDefaultButton
-onready var resetPathButton = $MainMarginContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ResetButton
+onready var usePathAsDefaultButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/UsePathAsDefaultButton
+onready var resetPathButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/ExportFilePathHBox/ResetButton
 
 var last_selected_file_index
 
