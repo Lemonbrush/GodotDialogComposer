@@ -25,6 +25,7 @@ func _ready():
 	update_save_button_availability()
 	update_file_list()
 	check_reset_path_availability()
+	selection_mode_toggle(true)
 
 func _on_save_button_pressed():
 	save()
@@ -93,10 +94,14 @@ func update_save_button_availability():
 	saveButton.disabled = projectNameLineEdit.text == ""
 
 func _on_delete_mode_button_pressed():
-	pathSelectionModeToggleButton.pressed = false
+	selection_mode_toggle(false)
 
 func _on_selection_mode_button_pressed():
-	fileDeletionModeToggleButton.pressed = false
+	selection_mode_toggle(true)
+
+func selection_mode_toggle(is_selection_mode_active):
+	pathSelectionModeToggleButton.disabled = is_selection_mode_active
+	fileDeletionModeToggleButton.disabled = !is_selection_mode_active
 
 func _on_reset_path_button_pressed():
 	exportLineEdit.text = PreferencesManager.default_save_path
