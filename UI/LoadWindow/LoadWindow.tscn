@@ -72,12 +72,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "X"
 
-[node name="AvailableProjectsList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="SearchHBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 margin_top = 40.0
+margin_right = 1848.0
+margin_bottom = 70.0
+custom_constants/separation = 10
+
+[node name="ResetSearchButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/SearchHBoxContainer"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "X"
+
+[node name="SearchLineEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/SearchHBoxContainer"]
+margin_left = 40.0
+margin_right = 1848.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="AvailableProjectsList" type="ItemList" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+margin_top = 80.0
 margin_right = 1848.0
 margin_bottom = 1000.0
 size_flags_vertical = 3
 allow_reselect = true
 
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/TopLabelContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/SearchHBoxContainer/ResetSearchButton" to="." method="_on_reset_search_button_pressed"]
+[connection signal="text_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/SearchHBoxContainer/SearchLineEdit" to="." method="_on_search_line_edit_text_changed"]
 [connection signal="item_selected" from="MarginContainer/Panel/MarginContainer/VBoxContainer/AvailableProjectsList" to="." method="_on_available_projects_list_item_selected"]

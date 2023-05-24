@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 onready var available_projects_list = $MarginContainer/Panel/MarginContainer/VBoxContainer/AvailableProjectsList
+onready var search_line_edit = $MarginContainer/Panel/MarginContainer/VBoxContainer/SearchHBoxContainer/SearchLineEdit
 
 var selected_item_index
 var file_list = []
@@ -24,3 +25,18 @@ func update_file_list():
 	
 	for file_name in file_list:
 		available_projects_list.add_item(file_name)
+
+func _on_reset_search_button_pressed():
+	search_line_edit.text = ""
+	update_file_list()
+
+
+func _on_search_line_edit_text_changed(new_text):
+	if new_text == "":
+		update_file_list()
+		return
+	
+	available_projects_list.clear()
+	for file_name in file_list:
+		if file_name.find(search_line_edit.text) != -1:
+			available_projects_list.add_item(file_name)
