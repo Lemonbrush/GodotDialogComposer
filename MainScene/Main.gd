@@ -134,7 +134,7 @@ func create_node(position, node_link):
 	node.name = str(hash(node))
 	
 	if position:
-		node.offset = get_global_mouse_position()
+		node.offset = (get_viewport().get_mouse_position() + graphEdit.scroll_offset) / graphEdit.zoom
 		if popupMenu.from_node != null && popupMenu.from_slot != null:
 			graphEdit.connect_node(popupMenu.from_node, popupMenu.from_slot, node.get_name(), 0)
 	
