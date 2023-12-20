@@ -39,6 +39,7 @@ func set_ids_for_nodes():
 	var connection_list = graphEdit.get_connection_list()
 	
 	if connection_list.size() == 0:
+		set_initial_node()
 		return
 	
 	var node_counter = 1
