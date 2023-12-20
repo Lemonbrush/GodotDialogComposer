@@ -24,6 +24,10 @@ func get_data():
 	if condition_lines.size() > 0:
 		return condition_lines
 
+func reset():
+	for line in conditions_container.get_children():
+		line.queue_free()
+
 func load_data(data):
 	if data == null:
 		return

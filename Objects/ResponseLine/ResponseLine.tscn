@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Objects/AdaptiveTextBox/AdaptiveTextBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/ResponseLine/ResponseLine.gd" type="Script" id=2]
-[ext_resource path="res://Objects/ConditionsBlock/ConditionsBlock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/PropertyContainer/PropertyContainer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/main_theme.tres" type="Theme" id=4]
 
 [node name="ResponseLine" type="MarginContainer"]
-margin_right = 128.0
+margin_right = 198.0
 margin_bottom = 74.0
 rect_pivot_offset = Vector2( -244, -59 )
 size_flags_horizontal = 3
@@ -16,31 +16,46 @@ custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
 script = ExtResource( 2 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 margin_top = 5.0
-margin_right = 230.0
-margin_bottom = 74.0
+margin_right = 198.0
+margin_bottom = 93.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_top = 5.0
+margin_right = 198.0
+margin_bottom = 93.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 188.0
+margin_bottom = 78.0
 size_flags_horizontal = 3
 custom_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 200.0
-margin_bottom = 69.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 148.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 
-[node name="AdaptiveTextBox" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_right = 200.0
+[node name="AdaptiveTextBox" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 148.0
 
-[node name="ConditionBlock" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 34.0
-margin_right = 200.0
-margin_bottom = 69.0
+[node name="PropertyContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 148.0
+margin_bottom = 68.0
 
-[node name="DeleteButton" type="Button" parent="HBoxContainer"]
-margin_left = 210.0
-margin_right = 230.0
-margin_bottom = 69.0
+[node name="DeleteButton" type="Button" parent="MarginContainer/HBoxContainer"]
+margin_left = 158.0
+margin_right = 178.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 20, 20 )
 text = "X"
 
-[connection signal="pressed" from="HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="did_color_property_changed" from="MarginContainer/HBoxContainer/VBoxContainer/PropertyContainer" to="." method="_on_PropertyContainer_did_color_property_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
